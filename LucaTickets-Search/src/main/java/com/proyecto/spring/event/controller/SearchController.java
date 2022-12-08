@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,7 +23,8 @@ public class SearchController {
 	@Autowired
 	private SearchService searchService;
 	
-	@Operation(summary = "Pedir lista eventos", description = "Pide los eventos al microservicio de Event, devuelve una lista", tags= {"search"})
+	@Operation(summary = "Pedir lista eventos", 
+			description = "Pide los eventos al microservicio de Event, devuelve una lista de todos los locales", tags= {"search"})
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "200", description = "Lista devuelta", content = {
 					@Content(mediaType = "application/json", schema = @Schema(implementation = EventResponse.class)) }),
@@ -32,4 +34,19 @@ public class SearchController {
 	public List<EventResponse> getAllEvent(){
 		return searchService.getAllEvent();
 	}
+	
+	@Operation(summary = "Pedir lista de eventos por tipo de local", 
+			description = "Pide los eventos al microservicio de Event, devuelve una lista de todos los eventos que tengan el tipo de local especificado", tags= {"search"})
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "200", description = "Lista devuelta", content = {
+					@Content(mediaType = "application/json", schema = @Schema(implementation = EventResponse.class)) }),
+			@ApiResponse(responseCode = "400", description = "No válido (NO implementado) ", content = @Content),
+			})
+	@GetMapping("/events/{tipo}")
+	public List<EventResponse> getEventByType(@PathVariable String tipo){
+		
+		return searchService.getEventByType(tipo);		
+		
+	}
+	
 }
