@@ -13,7 +13,7 @@ import io.swagger.v3.oas.models.info.License;
 public class OpenApiConfig {
 	
     @Bean
-    public OpenAPI StudentOpenAPI() {
+    public OpenAPI SearchOpenAPI() {
         return new OpenAPI()
                 .info(new Info().title("Search API")
                 .description("Documentación de la Search API")

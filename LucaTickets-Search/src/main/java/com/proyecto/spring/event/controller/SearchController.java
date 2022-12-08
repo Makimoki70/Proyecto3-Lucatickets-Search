@@ -28,7 +28,7 @@ public class SearchController {
 					@Content(mediaType = "application/json", schema = @Schema(implementation = EventResponse.class)) }),
 			@ApiResponse(responseCode = "400", description = "No válido (NO implementado) ", content = @Content),
 			})
-	@GetMapping
+	@GetMapping("/events")
 	public List<EventResponse> getAllEvent(){
 		return searchService.getAllEvent();
 	}
