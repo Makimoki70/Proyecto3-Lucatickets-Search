@@ -30,7 +30,7 @@ public class SearchController {
 					@Content(mediaType = "application/json", schema = @Schema(implementation = EventResponse.class)) }),
 			@ApiResponse(responseCode = "400", description = "No válido (NO implementado) ", content = @Content),
 			})
-	@GetMapping("/")
+	@GetMapping("/events")
 	public List<EventResponse> getAllEvent(){
 		return searchService.getAllEvent();
 	}
@@ -42,11 +42,10 @@ public class SearchController {
 					@Content(mediaType = "application/json", schema = @Schema(implementation = EventResponse.class)) }),
 			@ApiResponse(responseCode = "400", description = "No válido (NO implementado) ", content = @Content),
 			})
-	@GetMapping("/{tipo}")
+	@GetMapping("/events/{tipo}")
 	public List<EventResponse> getEventByType(@PathVariable String tipo){
 		
 		return searchService.getEventByType(tipo);		
 		
 	}
-	
 }
