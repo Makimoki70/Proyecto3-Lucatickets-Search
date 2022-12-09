@@ -42,10 +42,20 @@ public class SearchController {
 					@Content(mediaType = "application/json", schema = @Schema(implementation = EventResponse.class)) }),
 			@ApiResponse(responseCode = "400", description = "No válido (NO implementado) ", content = @Content),
 			})
-	@GetMapping("/events/{tipo}")
+	@GetMapping("/events/type/{tipo}")
 	public List<EventResponse> getEventByType(@PathVariable String tipo){
-		
 		return searchService.getEventByType(tipo);		
-		
+	}
+	
+	@Operation(summary = "Pedir lista de eventos por nombre", 
+			description = "Pide los eventos al microservicio de Event, devuelve una lista de todos los eventos que tengan el nombre especificado", tags= {"search"})
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "200", description = "Lista devuelta", content = {
+					@Content(mediaType = "application/json", schema = @Schema(implementation = EventResponse.class)) }),
+			@ApiResponse(responseCode = "400", description = "No válido (NO implementado) ", content = @Content),
+			})
+	@GetMapping("/events/name/{name}")
+	public List<EventResponse> getEventByName(@PathVariable String name){
+		return searchService.getEventByName(name);	
 	}
 }
