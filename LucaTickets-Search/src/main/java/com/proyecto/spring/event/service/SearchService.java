@@ -21,11 +21,10 @@ public class SearchService {
 	}
 	
 	public List<EventResponse> getEventByType(@PathVariable String tipo){
-		
 		return eventFeign.getEventByType(tipo);
-		
 	}
 	
-	
-	
+	public List<EventResponse> getEventByName(@PathVariable String name){
+		return eventFeign.getEventByName(name);
+	}
 }
