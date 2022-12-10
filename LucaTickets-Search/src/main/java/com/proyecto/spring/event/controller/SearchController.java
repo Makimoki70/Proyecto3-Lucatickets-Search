@@ -17,6 +17,18 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
+/**
+ * 
+ * Nombre de clase: SearchController. Descripcion: Controlador del microservicio Search.
+ * Implementa el metodo add a la base de datos, las busquedas por nombre y tipo de evento.
+ * Fecha: 09/12/2022
+ * 
+ * @author Alberto Egea y Joel Pascual
+ * @version 0.2
+ * @since 0.1
+ * 
+ */
+
 @RestController
 @RequestMapping("/search/")
 public class SearchController {
