@@ -70,4 +70,16 @@ public class SearchController {
 	public List<EventResponse> getEventByName(@PathVariable String name){
 		return searchService.getEventByName(name);	
 	}
+	
+	@Operation(summary = "Actualizar un evento existente", 
+			description = "Pide un evento concreto por medio de la id al microservicio Event, devuelve el evento con la update aplicada", tags= {"search"})
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "200", description = "Evento actualizado", content = {
+					@Content(mediaType = "application/json", schema = @Schema(implementation = EventResponse.class)) }),
+			@ApiResponse(responseCode = "400", description = "Evento inexistente ", content = @Content),
+			})
+	@GetMapping("/events/{id}")
+	public List<EventResponse> updateEvent(@PathVariable Long id){
+		return searchService.updateEvent(id);	
+	}
 }

@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.proyecto.spring.event.feignEvents.EventFeignClient;
@@ -51,5 +52,13 @@ public class SearchService {
      */
 	public List<EventResponse> getEventByName(@PathVariable String name){
 		return eventFeign.getEventByName(name);
+	}
+	
+	/**
+     * Método que updatea el evento guardado.
+     * @return la id del evento a actualizar
+     */
+	public List<EventResponse> updateEvent(@PathVariable Long id){
+		return eventFeign.updateEvent(id);
 	}
 }

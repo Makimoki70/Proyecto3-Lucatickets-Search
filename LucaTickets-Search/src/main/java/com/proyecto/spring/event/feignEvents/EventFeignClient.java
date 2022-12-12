@@ -31,4 +31,7 @@ public interface EventFeignClient {
 	
 	@GetMapping("/event/name/{name}")
 	public List<EventResponse> getEventByName(@PathVariable String name);
+	
+	@GetMapping("/event/{id}")
+	public List<EventResponse> updateEvent(@PathVariable Long id);
 }
