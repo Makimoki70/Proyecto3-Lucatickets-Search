@@ -1,4 +1,4 @@
-package com.proyecto.spring.event.feignEvents;
+package com.proyecto.spring.event.feigns;
 
 import java.util.List;
 

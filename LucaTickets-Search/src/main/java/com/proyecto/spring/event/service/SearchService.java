@@ -1,14 +1,15 @@
 package com.proyecto.spring.event.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import com.proyecto.spring.event.feignEvents.EventFeignClient;
+import com.proyecto.spring.event.feigns.EventFeignClient;
+import com.proyecto.spring.event.feigns.UserFeignClient;
 import com.proyecto.spring.event.model.response.EventResponse;
+import com.proyecto.spring.event.model.response.UserResponse;
 
 
 /**
@@ -28,6 +29,9 @@ import com.proyecto.spring.event.model.response.EventResponse;
 public class SearchService {
 	@Autowired
 	private EventFeignClient eventFeign;
+	
+	@Autowired
+	private UserFeignClient userFeign;
 	
 	/**
      * Método que toma del microservicio Event un listado de los eventos en la BBDD.
@@ -51,5 +55,9 @@ public class SearchService {
      */
 	public List<EventResponse> getEventByName(@PathVariable String name){
 		return eventFeign.getEventByName(name);
+	}
+	
+	public List<UserResponse> getAllUsers() {
+		return userFeign.getAllUsers();
 	}
 }

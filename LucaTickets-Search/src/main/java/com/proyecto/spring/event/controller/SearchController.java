@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.proyecto.spring.event.model.response.EventResponse;
+import com.proyecto.spring.event.model.response.UserResponse;
 import com.proyecto.spring.event.service.SearchService;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -69,5 +70,17 @@ public class SearchController {
 	@GetMapping("/events/name/{name}")
 	public List<EventResponse> getEventByName(@PathVariable String name){
 		return searchService.getEventByName(name);	
+	}
+	
+	@Operation(summary = "Pedir lista usuarios", 
+			description = "Pide los usuarios al microservicio de User, devuelve una lista de todos los usuarios", tags= {"search"})
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "200", description = "Lista devuelta", content = {
+					@Content(mediaType = "application/json", schema = @Schema(implementation = EventResponse.class)) }),
+			@ApiResponse(responseCode = "400", description = "No válido (NO implementado) ", content = @Content),
+			})
+	@GetMapping("/users")
+	public List<UserResponse> getAllUsers(){
+		return searchService.getAllUsers();
 	}
 }
